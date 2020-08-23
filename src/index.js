@@ -1,4 +1,4 @@
-import {createStore} from 'redux';
+import {createStore} from './redux';
 
 // 初始值
 var initState = 0; 
@@ -25,11 +25,16 @@ function reducer(state = initState, action) {
  * state赋予默认值的两种方法：
  *  1. 在reducer中赋值
  *  2. 在createStore方法的第二个参数赋值
+ * 如果同时使用以上两种方式给state赋默认值，以第二种为主
  */
 var store = createStore(reducer, initState);
 
 // 订阅仓库中的数据变化，并执行render方法
-store.subscribe(render);
+const unsubscribe = store.subscribe(render);
+// 两秒后取消订阅
+setTimeout(() => {
+  unsubscribe();
+}, 2000);
 
 var root = document.getElementById('root');
 var incrementBtn = document.getElementById('increment-btn');
