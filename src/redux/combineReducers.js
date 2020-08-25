@@ -3,10 +3,7 @@
  */
 
 export default function (reducers) {
-    /**
-     * 当前state => { counter: 0, counter1: { number: 1 } }
-     * 当状态改变时，依次执行每个reducer，并返回新的state
-     */
+    // 当状态改变时，依次执行每个reducer，并返回新的state
     const nextState = {};
     return function (state = {}, action) {
         const reducerKeys = Object.keys(reducers); // reducerKeys => ['counter', 'counter1']
@@ -17,7 +14,7 @@ export default function (reducers) {
             nextState[key] = nextStateForKey; // 保存更新后的state
         });
 
-        // 更新后的state和更新前的state保持一样的数据结构
+        // nextState => { counter: 0, counter1: { number: 1 } }
         return nextState;
     }
 }
