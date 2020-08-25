@@ -1,7 +1,7 @@
-import * as types from './action-types';
+import * as types from '../action-types';
 
 // redux动作中规定必须有一个部位undefined的type属性，用来表示动作类型
-function reducer(state, action) {
+function reducer(state = 0, action) {
     switch (action.type) {
         case types.INCREMENT:
             return state + 1;

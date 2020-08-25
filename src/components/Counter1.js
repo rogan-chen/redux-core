@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import store from '../store';
-import actions from '../store/actions/Counter';
+import actions from '../store/actions/Counter1';
 
 export default class Counter extends Component {
     constructor(props) {
@@ -9,13 +9,13 @@ export default class Counter extends Component {
         this.unsubscribe = null;
         this.onIncrement = this.onIncrement.bind(this);
         this.onDecrement = this.onDecrement.bind(this);
-        this.state = { number: store.getState().counter };
+        this.state = { number: store.getState().counter1.number };
     }
 
     componentDidMount() {
         // 订阅仓库中的数据变化，并更新状态
         this.unsubscribe = store.subscribe(() => {
-            this.setState({ number: store.getState().counter })
+            this.setState({ number: store.getState().counter1.number });
         });
     }
 
@@ -37,7 +37,7 @@ export default class Counter extends Component {
     render() {
         return (
             <div>
-                <div>Counter组件：{this.state.number}</div>
+                <div>Counter1组件：{this.state.number}</div>
                 <button onClick={this.onIncrement}>+</button>
                 <button onClick={this.onDecrement}>-</button>
             </div>
