@@ -56,7 +56,7 @@ export default function createStore(reducer, preloadedState) {
             if(!subscribed) return; // 防止重复取消订阅
             const index = currentListeners.indexOf(listenr);
             currentListeners.splice(index, 1);
-            subscribe = false;
+            subscribed = false;
         }
     }
 
