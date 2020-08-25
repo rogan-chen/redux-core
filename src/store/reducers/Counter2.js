@@ -1,7 +1,7 @@
 import * as types from '../action-types';
 
 const initState = { 
-    number: 2, 
+    number: 2,
     age: 10,
 };
 
